@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
+#MISE description="Follow the service log (each double/triple press is logged)"
+set -euo pipefail
+exec journalctl --user -u headset-button.service -f

@@ -1,0 +1,8 @@
+# Build output
+/bin/
+/headset-button
+
+# Go test and profiling binaries
+*.test
+*.out
+*.prof

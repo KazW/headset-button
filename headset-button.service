@@ -1,0 +1,14 @@
+[Unit]
+Description=Corsair VOID v2 button: double press toggles dictation, triple press sends Enter
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=%h/.local/bin/headset-button
+Restart=on-failure
+RestartSec=3
+# omarchy-dictation lives in /usr/share/omarchy/bin.
+Environment=PATH=%h/.local/bin:/usr/share/omarchy/bin:/usr/local/bin:/usr/bin
+
+[Install]
+WantedBy=graphical-session.target

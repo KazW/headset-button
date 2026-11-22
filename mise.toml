@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: MIT
+# Toolchain for headset-button. Tasks are shell scripts in .mise/tasks/.
+
+[tools]
+go = "1.27.3"
+
+[settings]
+# Put mise's Go ahead of /usr/bin/go (Arch's go package) on PATH; without this
+# the system go runs with mise's GOROOT and the build fails on a version mismatch.
+activate_aggressive = true

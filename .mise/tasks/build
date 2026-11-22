@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
+#MISE description="Vet and build headset-button into bin/"
+set -euo pipefail
+cd "${MISE_PROJECT_ROOT:?}"
+go vet ./...
+go build -o bin/headset-button .
+echo "built bin/headset-button"

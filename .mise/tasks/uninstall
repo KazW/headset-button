@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
+#MISE description="Stop and disable the service and remove the installed binary and unit"
+set -euo pipefail
+systemctl --user disable --now headset-button.service || true
+rm -f "$HOME/.local/bin/headset-button" "$HOME/.config/systemd/user/headset-button.service"
+systemctl --user daemon-reload
+echo "uninstalled"

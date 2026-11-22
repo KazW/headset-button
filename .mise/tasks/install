@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
+#MISE description="Build, install to ~/.local/bin and (re)start the systemd user service"
+#MISE depends=["build"]
+set -euo pipefail
+cd "${MISE_PROJECT_ROOT:?}"
+mkdir -p "$HOME/.local/bin" "$HOME/.config/systemd/user"
+# install replaces the file rather than writing into it, so a running binary is fine.
+install -m 755 bin/headset-button "$HOME/.local/bin/headset-button"
+install -m 644 headset-button.service "$HOME/.config/systemd/user/headset-button.service"
+systemctl --user daemon-reload
+systemctl --user enable headset-button.service
+systemctl --user restart headset-button.service
+sleep 1
+systemctl --user --no-pager --lines=3 status headset-button.service
